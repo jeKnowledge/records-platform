@@ -3,7 +3,7 @@ Template.dashboard.meetings = function () {
 };
 
 Template.dashboard.events({
-	'click #new-metting-btn': function() {
+	'click #new-meeting-btn': function() {
 		Meteor.call('newMeeting', function(error) {
 		if (error) {
 			console.log(error);
