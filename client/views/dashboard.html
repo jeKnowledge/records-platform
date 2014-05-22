@@ -1,3 +1,10 @@
 <template name="dashboard">
  <p>Login feito com sucesso</p>
+
+ {{#each meetings}}
+ 	{{> meeting}}
+ {{/each}}
+
+ <input type = "button" value = "Adicionar Reunião" id = "new-meeting-btn"> 
+
 </template>
