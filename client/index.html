@@ -1,0 +1,17 @@
+<head>
+  <title>record-platform</title>
+</head>
+
+<body>
+	{{> loginButtons}}
+	{{> main}}
+</body>
+
+
+<template name="main">
+	{{#if currentUser}}
+		{{> dashboard}}
+	{{else}}
+		<p>Inscreve-te</p>
+	{{/if}} 
+</template>
