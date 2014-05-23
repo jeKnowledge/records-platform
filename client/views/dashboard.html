@@ -1,33 +1,32 @@
 <template name="dashboard">
- <p>Login feito com sucesso</p>
+  <p>Login feito com sucesso</p>
 
- <p>Current Meeting: {{selectedMeetingName}}</p>
+  <p>Current Meeting: {{selectedMeetingName}}</p>
 
- {{#each meetings}}
-  {{> meeting}}
- {{/each}}
-
- <p>
- <input type = "text" id = "add-meeting-name-input">
- <input type = "date" id = "add-meeting-date-input">
- <input type = "time" id = "add-meeting-time-input">
- <input type = "text" id = "add-meeting-subject-input"> 
- <input type = "button" value = "Adicionar Reunião" id = "new-meeting-btn"> 
- </p>
-
- <select id = "meeting-select">
   {{#each meetings}}
-   <option name="{{name}}">{{name}}</option>
+    {{> meeting}}
   {{/each}}
- </select>
- 
- <p>
-  <input type = "text" id = "add-meeting-record-input"> 
-  <input type = "button" value = "Adicionar Acta" id = "add-meeting-record-btn">
- </p>
 
- {{#each attendances}}
-  {{> attendance}}
- {{/each}} 
+  <p>
+    <input type="text" id="add-meeting-name-input">
+    <input type="date" id="add-meeting-date-input">
+    <input type="time" id="add-meeting-time-input">
+    <input type="text" id="add-meeting-subject-input">
+    <input type="button" value="Adicionar Reunião" id="new-meeting-btn">
+  </p>
 
+  <select id="meeting-select">
+    {{#each meetings}}
+      <option name="{{name}}">{{name}}</option>
+    {{/each}}
+  </select>
+
+  <p>
+    <input type="text" id="add-meeting-record-input">
+    <input type="button" value="Adicionar Acta" id="add-meeting-record-btn">
+  </p>
+
+  {{#each attendances}}
+    {{> attendance}}
+  {{/each}}
 </template>
