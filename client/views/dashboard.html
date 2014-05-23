@@ -26,4 +26,8 @@
   <input type = "button" value = "Adicionar Acta" id = "add-meeting-record-btn">
  </p>
 
+ {{#each attendances}}
+  {{> attendance}}
+ {{/each}} 
+
 </template>
