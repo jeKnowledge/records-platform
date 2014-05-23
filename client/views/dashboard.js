@@ -28,21 +28,22 @@ Template.dashboard.events({
   });
  },
 
- 'click #new-meeting-record-btn': function() {
-  var addRecord =$ ('#add-meeting-record-btn').val();
-  var selectedMeetingname =$ ('#metting-select').val();
-  var selectedMeeting = Mettings.findOne({ name: selectedMeetingName });
+ 'click #add-meeting-record-btn': function() {
+  console.log("CENAS");
+  var addRecordinfo =$ ('#add-meeting-record-input').val();
+  var selectedMeetingName =$ ('#meeting-select').val();
+  var selectedMeeting = Meetings.findOne({ name: selectedMeetingName });
 
-  Meteor.call('addRecord', addRecord, selectedMeeting._id, function(error) {
+  Meteor.call('addRecord', addRecordinfo, selectedMeeting._id, function(error) {
    if (error) {
     console.log(error);
    }
   });
  },
 
- 'change #metting-select': function () {
-  var selectedMeetingName =$ ('#meeting-select').var();
-  var selectedMeeting = Mettings.findOne({ name: selectedMeetingName });
+ 'change #meeting-select': function () {
+  var selectedMeetingName =$ ('#meeting-select').val();
+  var selectedMeeting = Meetings.findOne({ name: selectedMeetingName });
   Session.set('selectedMeeting', selectedMeeting._id);
  }
 });

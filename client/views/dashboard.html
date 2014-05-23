@@ -7,20 +7,23 @@
   {{> meeting}}
  {{/each}}
 
+ <p>
  <input type = "text" id = "add-meeting-name-input">
  <input type = "date" id = "add-meeting-date-input">
  <input type = "time" id = "add-meeting-time-input">
  <input type = "text" id = "add-meeting-subject-input"> 
  <input type = "button" value = "Adicionar Reunião" id = "new-meeting-btn"> 
- 
+ </p>
 
  <select id = "meeting-select">
   {{#each meetings}}
    <option name="{{name}}">{{name}}</option>
   {{/each}}
  </select>
-
- <input type = "button" value = "Adicionar Acta" id = "add-meeting-record-btn">
-
+ 
+ <p>
+  <input type = "text" id = "add-meeting-record-input"> 
+  <input type = "button" value = "Adicionar Acta" id = "add-meeting-record-btn">
+ </p>
 
 </template>
