@@ -3,15 +3,15 @@ Template.dashboard.meetings = function () {
 };
 
 Template.dashboard.selectedMeetingName = function() {
-  var meeting = Meetings.findOne(Session.get('selectedMeeting'));
-  return meeting && meeting.name;
+ var meeting = Meetings.findOne(Session.get('selectedMeeting'));
+ return meeting && meeting.name;
 };
 
 Template.dashboard.rendered = function() {
-  var allMeetings = Meetings.find({ }).fetch();
-  if (allMeetings.lentgh > 0) {
-    Session.set('selectedMeeting', allMeetings[0]._id)
-  }
+ var allMeetings = Meetings.find({ }).fetch();
+ if (allMeetings.lentgh > 0) {
+  Session.set('selectedMeeting', allMeetings[0]._id)
+ }
 };
 
 Template.dashboard.events({

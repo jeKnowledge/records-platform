@@ -1,1 +1,1 @@
-Meetings = new Meteor.Collection('meetings');
+Meetings =new Meteor.Collection('meetings');

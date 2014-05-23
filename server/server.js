@@ -6,5 +6,4 @@ Meteor.methods({
  addRecord: function (addRecord,meeting_id) {
   Meetings.update(meeting_id,{$addToSet:{record: {text :addRecord}}});
  }
-
 });
