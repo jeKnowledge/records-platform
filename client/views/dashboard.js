@@ -2,6 +2,18 @@ Template.dashboard.meetings = function () {
  return Meetings.find({});
 };
 
+Template.dashboard.selectedMeetingName = function() {
+  var meeting = Meetings.findOne(Session.get('selectedMeeting'));
+  return meeting && meeting.name;
+};
+
+Template.dashboard.rendered = function() {
+  var allMeetings = Meetings.find({ }).fetch();
+  if (allMeetings.lentgh > 0) {
+    Session.set('selectedMeeting', allMeetings[0]._id)
+  }
+};
+
 Template.dashboard.events({
  'click #new-meeting-btn': function() {
   var addName =$ ('#add-meeting-name-input').val(); 
@@ -31,6 +43,6 @@ Template.dashboard.events({
  'change #metting-select': function () {
   var selectedMeetingName =$ ('#meeting-select').var();
   var selectedMeeting = Mettings.findOne({ name: selectedMeetingName });
-  Session.set('selectedMeeting', selectedMeeting._id)
+  Session.set('selectedMeeting', selectedMeeting._id);
  }
 });

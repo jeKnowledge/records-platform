@@ -1,6 +1,8 @@
 <template name="dashboard">
  <p>Login feito com sucesso</p>
 
+<p>Current Meeting: {{selectedMeetingName}}</p>
+
  {{#each meetings}}
   {{> meeting}}
  {{/each}}
@@ -13,7 +15,7 @@
  
 
  <select id = "meeting-select">
-  {{#each mettings}}
+  {{#each meetings}}
    <option name="{{name}}">{{name}}</option>
   {{/each}}
  </select>
