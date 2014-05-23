@@ -10,5 +10,15 @@
  <input type = "time" id = "add-meeting-time-input">
  <input type = "text" id = "add-meeting-subject-input"> 
  <input type = "button" value = "Adicionar Reunião" id = "new-meeting-btn"> 
+ 
+
+ <select id = "meeting-select">
+  {{#each mettings}}
+   <option name="{{name}}">{{name}}</option>
+  {{/each}}
+ </select>
+
+ <input type = "button" value = "Adicionar Acta" id = "add-meeting-record-btn">
+
 
 </template>
