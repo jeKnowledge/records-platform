@@ -7,6 +7,11 @@ Template.dashboard.selectedMeetingName = function() {
   return meeting && meeting.name;
 };
 
+Template.dashboard.users = function () {
+ return Meteor.users.find({});
+}
+
+
 Template.dashboard.rendered = function() {
   var allMeetings = Meetings.find({ }).fetch();
 
