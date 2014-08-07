@@ -1,3 +1,3 @@
-Meteor.publish('meetings', function() {
-  return Meetings.find({ });
+Meteor.publish('atas', function() {
+  return Atas.find({ });
 });
