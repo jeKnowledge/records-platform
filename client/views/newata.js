@@ -11,5 +11,9 @@ Template.newata.events({
     var content = $('#ata-content').val();
 
     Meteor.call('addata', subject, date, department, content);
+
+    $('#ata-subject').val('');
+    $('#ata-date').val('');
+    $('#ata-content').val('');
   }
 });

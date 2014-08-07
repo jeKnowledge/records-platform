@@ -1,5 +1,11 @@
 <template name="manageatas">
-  <p>Escolha a ata a editar da lista em baixo</p>
+
+  <!--
+
+  Procurar atas por: data, departamento, projeto
+
+  -->
+
   <select id="ata-department" class="form-control">
     {{#each atasubject}}
       <option name="{{subject}}">{{subject}}</option>
