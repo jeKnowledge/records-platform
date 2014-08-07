@@ -1,3 +1,11 @@
 <template name="newata">
-  <h1>New ata</h1>
+  <form id="new-ata-form" action="action">
+    <input type="text" id="ata-suject" placeholder="Assunto" class="form-control"/>
+
+    <input type="password" id="ata-date" placeholder="Data (d-m-a)" class="form-control"/>
+
+    <textarea id="ata-content" placeholder="Conteudo da ata" class="form-control" rows="8"></textarea>
+
+    <button type="submit" class="btn btn-success btn-block">Submeter</button>
+  </form>  
 </template>
