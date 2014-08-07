@@ -1,3 +1,7 @@
+Template.newata.rendered = function () {
+    $('#ata-date').datepicker();
+}
+
 Template.newata.events({
   'submit #new-ata-form': function (evt, tmpl) {
     evt.preventDefault();
