@@ -18,11 +18,18 @@ Template.manageatas.atasubject = function () {
 Template.manageatas.events({
   'change #ata-selector': function (evt, tmpl) {
     //May broke up if two atas have the same name (fix later)
-    var selectedAta = $('#ata-selector').val();
-    var searchAta = Atas.find({ subject: selectedAta }).fetch()[0];
+    var selectedAta = $('#ata-selector option:selected').attr('name');
+    var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
     updateForm(searchAta.subject, searchAta.date, searchAta.department, searchAta.content);
   },
   'submit #edit-ata-form': function (evt, tmpl) {
+    evt.preventDefault();
+    var subject = $('#edit-ata-subject').val();
+    var date = $('#edit-ata-date').val();
+    var department = $('#edit-ata-department').val();
+    var content = $('#edit-ata-content').val();
+    var ataId = $('#ata-selector option:selected').attr('name');
 
+    Meteor.call('updateata', subject, date, department, content, ataId);
   }
 });
