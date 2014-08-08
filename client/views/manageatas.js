@@ -1,5 +1,4 @@
 var updateForm = function (subject, date, department, content) {
-  console.log(date);
   $('#edit-ata-subject').val(subject);
   $('#edit-ata-date').val(date);
   $('#edit-ata-department').val(department);
@@ -22,5 +21,8 @@ Template.manageatas.events({
     var selectedAta = $('#ata-selector').val();
     var searchAta = Atas.find({ subject: selectedAta }).fetch()[0];
     updateForm(searchAta.subject, searchAta.date, searchAta.department, searchAta.content);
+  },
+  'submit #edit-ata-form': function (evt, tmpl) {
+
   }
 });

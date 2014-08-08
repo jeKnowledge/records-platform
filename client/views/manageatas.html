@@ -6,7 +6,7 @@
 
   -->
 
-  <p>Escolha a data a editar:</p>
+  <p class="form-element">Escolha a data a editar:</p>
 
   <select id="ata-selector" class="form-control">
     {{#each atasubject}}
@@ -14,22 +14,22 @@
     {{/each}}
   </select>
 
-  <p>Edite e clique no botão atualizar para guardar</p>
+  <p class="form-element">Edite e clique no botão atualizar para guardar</p>
 
   <form id="edit-ata-form" action="action">
-    <input type="text" id="edit-ata-subject" placeholder="Assunto" class="form-control new-ata-element"/>
+    <input type="text" id="edit-ata-subject" placeholder="Assunto" class="form-control form-element"/>
 
-    <input type="text" id="edit-ata-date" placeholder="Data (clique)" class="form-control new-ata-element"/>
+    <input type="text" id="edit-ata-date" placeholder="Data (clique)" class="form-control form-element"/>
 
-    <select id="edit-ata-department" class="form-control new-ata-element">
+    <select id="edit-ata-department" class="form-control form-element">
       <option name="Tecnologia">Tecnologia</option>
       <option name="Inovação">Inovação</option>
       <option name="Iterno">Interno</option>
     </select>
 
-    <textarea id="edit-ata-content" placeholder="Conteudo da ata" class="form-control new-ata-element" rows="8"></textarea>
+    <textarea id="edit-ata-content" placeholder="Conteudo da ata" class="form-control form-element" rows="8"></textarea>
 
-    <button type="submit" class="btn btn-success btn-block new-ata-element">Atualizar</button>
+    <button type="submit" class="btn btn-success btn-block form-element">Atualizar</button>
   </form>  
 
 </template>
