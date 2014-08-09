@@ -9,7 +9,11 @@ var displayMessage = function (tipo, message) {
 }
 
 Template.newata.rendered = function () {
-    $('#ata-date').datepicker();
+  //Iniciar Date Picker
+  $('#ata-date').datepicker();
+
+  //Hide Info Paragraph
+  $('#info-paragraph').hide();
 }
 
 Template.newata.events({

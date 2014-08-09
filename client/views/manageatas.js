@@ -16,9 +16,15 @@ var displayMessage = function (tipo, message) {
 }
 
 Template.manageatas.rendered = function () {
+    //Iniciar Date Picker
     $('#edit-ata-date').datepicker();
+
+    //Iniciar Form 
     var firstAta = Atas.findOne();
     updateForm(firstAta.subject, firstAta.date, firstAta.department, firstAta.content);
+
+    //Hide Info Paragraph
+    $('#manage-info-paragraph').hide();
 }
 
 Template.manageatas.atasubject = function () {
