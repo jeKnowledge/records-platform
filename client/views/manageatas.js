@@ -47,5 +47,26 @@ Template.manageatas.events({
         displayMessage('alert-success', 'Ata atualizada com sucesso.');
       }
     });
+  },
+  'click #download-pdf': function (evt, tmpl) {
+    var selectedAta = $('#ata-selector option:selected').attr('name');
+    var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
+    
+    var doc = new jsPDF();
+    
+    doc.setFontSize(30);
+    doc.text(30, 30, searchAta.subject);
+
+    doc.setFontSize(14);
+    doc.text(30, 45, 'Data: '+searchAta.date);
+    doc.text(30, 55, 'Departamento: '+searchAta.department);
+
+    doc.setFontSize(12);
+    doc.text(30, 65, searchAta.content);
+
+    var out = doc.output('datauristring');
+    var x = window.open();
+    x.document.open();
+    x.document.location=out;
   }
 });
