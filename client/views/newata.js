@@ -1,6 +1,7 @@
 var displayMessage = function (tipo, message) {
   $('#info-paragraph-text').text(message);
 
+  $('#info-paragraph').show();
   $('#info-paragraph').removeClass();
   $('#info-paragraph').addClass('form-element');
   $('#info-paragraph').addClass('alert');

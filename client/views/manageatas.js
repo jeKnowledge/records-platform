@@ -8,6 +8,7 @@ var updateForm = function (subject, date, department, content) {
 var displayMessage = function (tipo, message) {
   $('#manage-info-paragraph-text').text(message);
 
+  $('#manage-info-paragraph').show();
   $('#manage-info-paragraph').removeClass();
   $('#manage-info-paragraph').addClass('form-element');
   $('#manage-info-paragraph').addClass('alert');
