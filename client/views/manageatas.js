@@ -5,6 +5,15 @@ var updateForm = function (subject, date, department, content) {
   $('#edit-ata-content').val(content);  
 };
 
+var displayMessage = function (tipo, message) {
+  $('#manage-info-paragraph-text').text(message);
+
+  $('#manage-info-paragraph').removeClass();
+  $('#manage-info-paragraph').addClass('form-element');
+  $('#manage-info-paragraph').addClass('alert');
+  $('#manage-info-paragraph').addClass(tipo);
+}
+
 Template.manageatas.rendered = function () {
     $('#edit-ata-date').datepicker();
     var firstAta = Atas.findOne();
@@ -30,6 +39,12 @@ Template.manageatas.events({
     var content = $('#edit-ata-content').val();
     var ataId = $('#ata-selector option:selected').attr('name');
 
-    Meteor.call('updateata', subject, date, department, content, ataId);
+    Meteor.call('updateata', subject, date, department, content, ataId, function (error) {
+      if (error) {
+        displayMessage('alert-danger', error);
+      } else {
+        displayMessage('alert-success', 'Ata atualizada com sucesso.');
+      }
+    });
   }
 });

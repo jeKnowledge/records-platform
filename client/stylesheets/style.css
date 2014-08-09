@@ -5,3 +5,8 @@
 .form-element{
 	margin-top: 10px;
 }
+
+/* Reset Bootstrap */
+.alert{
+	margin-bottom: 0px;
+}

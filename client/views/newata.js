@@ -1,3 +1,12 @@
+var displayMessage = function (tipo, message) {
+  $('#info-paragraph-text').text(message);
+
+  $('#info-paragraph').removeClass();
+  $('#info-paragraph').addClass('form-element');
+  $('#info-paragraph').addClass('alert');
+  $('#info-paragraph').addClass(tipo);
+}
+
 Template.newata.rendered = function () {
     $('#ata-date').datepicker();
 }
@@ -10,10 +19,15 @@ Template.newata.events({
     var department = $('#ata-department').val();
     var content = $('#ata-content').val();
 
-    Meteor.call('addata', subject, date, department, content);
-
-    $('#ata-subject').val('');
-    $('#ata-date').val('');
-    $('#ata-content').val('');
+    Meteor.call('addata', subject, date, department, content, function (error) {
+      if (error) {
+        displayMessage('alert-danger', error);
+      } else {
+        displayMessage('alert-success', 'Ata inserida com sucesso na base de dados.');
+        $('#ata-subject').val('');
+        $('#ata-date').val('');
+        $('#ata-content').val('');
+      }
+    });
   }
 });
