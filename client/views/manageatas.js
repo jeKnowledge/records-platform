@@ -63,18 +63,20 @@ Template.manageatas.events({
     var doc = new jsPDF();
     
     doc.setFontSize(30);
-    doc.text(30, 30, searchAta.subject);
+    doc.text(30, 30, 'Ata ' + searchAta.subject);
 
     doc.setFontSize(14);
-    doc.text(30, 45, 'Data: '+searchAta.date);
-    doc.text(30, 55, 'Departamento: '+searchAta.department);
+    doc.text(30, 40, 'Data: ' + searchAta.date);
+    doc.text(30, 50, 'Departamento: ' + searchAta.department);
 
-    doc.setFontSize(12);
-    doc.text(30, 65, searchAta.content);
+    doc.setFontSize(11);
+    doc.text(30, 60, searchAta.content);
 
     var out = doc.output('datauristring');
     var x = window.open();
     x.document.open();
     x.document.location=out;
+
+    displayMessage('alert-success', 'PDF gerado com sucesso.')
   }
 });
