@@ -30,7 +30,7 @@ Meteor.methods({
                   content: ata_content
     });
   },
-  'updateata': function ( ata_subject, ata_date, ata_department, ata_content, ata_id) {
+  'updateata': function (ata_subject, ata_date, ata_department, ata_content, ata_id) {
     if (!ata_subject) {
       throw new Meteor.Error(411, 'Ata subject is too small.');
     }
@@ -43,8 +43,15 @@ Meteor.methods({
       throw new Meteor.Error(411, 'Ata content is too small.');
     }
 
-    Atas.update( { _id: ata_id },
-                 { subject: ata_subject, date: ata_date, department: ata_department, content: ata_content }
+    Atas.update({ _id: ata_id },
+                { subject: ata_subject, date: ata_date, department: ata_department, content: ata_content }
     );
+  },
+  'deleteata': function (ata_id) {
+    Atas.remove({ _id: ata_id }, function (error) {
+      if (error) {
+        throw new Meteor.Error(500, error);
+      };
+    });
   }
 });

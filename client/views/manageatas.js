@@ -21,26 +21,24 @@ Template.manageatas.rendered = function () {
 
   //Hide Info Paragraph
   $('#manage-info-paragraph').hide();
-
-  // BUG: db not ready and next two lines crash
-  
-  //Iniciar Form 
-  var firstAta = Atas.findOne();
-  updateForm(firstAta.subject, firstAta.date, firstAta.department, firstAta.content);
 }
 
 Template.manageatas.atas = function () {
-  return Atas.find( {}, { sort: {date: -1} });
+  return Atas.find({}, { sort: { date: -1 } });
 }
 
 Template.manageatas.events({
   'change #ata-selector': function (evt, tmpl) {
-    //May broke up if two atas have the same name (fix later)
     var selectedAta = $('#ata-selector option:selected').attr('name');
-    var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
-    updateForm(searchAta.subject, searchAta.date, searchAta.department, searchAta.content);
+
+    if (selectedAta === 'empty') {
+      updateForm('', '', '', '');
+    } else {
+      var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
+      updateForm(searchAta.subject, searchAta.date, searchAta.department, searchAta.content);
+    }
   },
-  'submit #edit-ata-form': function (evt, tmpl) {
+  'click #update-ata': function (evt, tmpl) {
     evt.preventDefault();
     var subject = $('#edit-ata-subject').val();
     var date = $('#edit-ata-date').val();
@@ -56,13 +54,26 @@ Template.manageatas.events({
       }
     });
   },
+  'click #delete-ata': function (evt, tmpl) {
+    var selectedAta = $('#ata-selector option:selected').attr('name');
+
+    Meteor.call('deleteata', selectedAta, function (error) {
+      if (error) {
+        displayMessage('alert-danger', error);
+      } else {
+        displayMessage('alert-success', 'Ata eliminada com sucesso.');
+
+        updateForm('', '', '', '');
+      }
+    });
+  }, 
   'click #download-pdf': function (evt, tmpl) {
     var selectedAta = $('#ata-selector option:selected').attr('name');
     var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
     
     var doc = new jsPDF();
     
-    doc.setFontSize(30);
+    doc.setFontSize(25);
     doc.text(30, 30, 'Ata ' + searchAta.subject);
 
     doc.setFontSize(14);

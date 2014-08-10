@@ -16,12 +16,13 @@
   <p class="form-element">Escolha a ata a editar:</p>
 
   <select id="ata-selector" class="form-control">
+    <option name="empty" selected>Escolha a ata a editar</option>
     {{#each atas}}
     <option name="{{_id}}">{{date}} - {{subject}}</option>
     {{/each}}
   </select>
 
-  <p class="form-element">Edite e clique no botão atualizar para guardar ou efetue o download da ata em PDF.</p>
+  <p class="form-element">Edite e clique no botão atualizar para guardar e/ou efetue o download da ata em PDF.</p>
 
   <form id="edit-ata-form" action="action">
     <input type="text" id="edit-ata-subject" placeholder="Assunto" class="form-control form-element"/>
@@ -34,11 +35,19 @@
       <option name="Iterno">Interno</option>
     </select>
 
-    <textarea id="edit-ata-content" placeholder="Conteudo da ata" class="form-control form-element" rows="8"></textarea>
-
-    <button type="submit" class="btn btn-success btn-block form-element">Atualizar</button>
+    <textarea id="edit-ata-content" placeholder="Conteudo da ata" class="form-control form-element" rows="10"></textarea>
   </form>
 
-  <button class="btn btn-danger btn-block form-element" id="download-pdf">Download PDF</button>
+  <div class="btn-group btn-group-justified form-element">
+    <div class="btn-group">
+      <button class="btn btn-success" id="update-ata">Atualizar</button>    
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-danger" id="delete-ata">Eliminar ata</button>        
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" id="download-pdf">Download PDF</button>
+    </div>
+  </div>
 
 </template>
