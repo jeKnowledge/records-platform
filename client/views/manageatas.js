@@ -29,8 +29,8 @@ Template.manageatas.rendered = function () {
   updateForm(firstAta.subject, firstAta.date, firstAta.department, firstAta.content);
 }
 
-Template.manageatas.atasubject = function () {
-  return Atas.find();
+Template.manageatas.atas = function () {
+  return Atas.find( {}, { sort: {date: -1} });
 }
 
 Template.manageatas.events({

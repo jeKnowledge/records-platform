@@ -16,8 +16,8 @@
   <p class="form-element">Escolha a ata a editar:</p>
 
   <select id="ata-selector" class="form-control">
-    {{#each atasubject}}
-    <option name="{{_id}}">{{subject}}</option>
+    {{#each atas}}
+    <option name="{{_id}}">{{date}} - {{subject}}</option>
     {{/each}}
   </select>
 
