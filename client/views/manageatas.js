@@ -46,48 +46,61 @@ Template.manageatas.events({
     var content = $('#edit-ata-content').val();
     var ataId = $('#ata-selector option:selected').attr('name');
 
-    Meteor.call('updateata', subject, date, department, content, ataId, function (error) {
-      if (error) {
-        displayMessage('alert-danger', error);
-      } else {
-        displayMessage('alert-success', 'Ata atualizada com sucesso.');
-      }
-    });
+    if (ataId === 'empty') {
+      displayMessage('alert-info', 'Escolha uma ata em primeiro.');
+    } else {
+      Meteor.call('updateata', subject, date, department, content, ataId, function (error) {
+        if (error) {
+          displayMessage('alert-danger', error);
+        } else {
+          displayMessage('alert-success', 'Ata atualizada com sucesso.');
+        }
+      });
+    }
   },
   'click #delete-ata': function (evt, tmpl) {
     var selectedAta = $('#ata-selector option:selected').attr('name');
 
-    Meteor.call('deleteata', selectedAta, function (error) {
-      if (error) {
-        displayMessage('alert-danger', error);
-      } else {
-        displayMessage('alert-success', 'Ata eliminada com sucesso.');
+    if (selectedAta === 'empty') {
+      displayMessage('alert-info', 'Escolha uma ata em primeiro');
+    } else {
+      Meteor.call('deleteata', selectedAta, function (error) {
+        if (error) {
+          displayMessage('alert-danger', error);
+        } else {
+          displayMessage('alert-success', 'Ata eliminada com sucesso.');
 
-        updateForm('', '', '', '');
-      }
-    });
+          updateForm('', '', '', '');
+        }
+      });
+    }
   }, 
   'click #download-pdf': function (evt, tmpl) {
     var selectedAta = $('#ata-selector option:selected').attr('name');
-    var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
+
+    if (selectedAta === 'empty') {
+      displayMessage('alert-info', 'Escolha uma ata em primeiro.');
+    } else {
+      var searchAta = Atas.find({ _id: selectedAta }).fetch()[0];
     
-    var doc = new jsPDF();
+      var doc = new jsPDF();
     
-    doc.setFontSize(25);
-    doc.text(30, 30, 'Ata ' + searchAta.subject);
+      doc.setFontSize(25);
+      doc.text(30, 30, 'Ata ' + searchAta.subject);
 
-    doc.setFontSize(14);
-    doc.text(30, 40, 'Data: ' + searchAta.date);
-    doc.text(30, 50, 'Departamento: ' + searchAta.department);
+      doc.setFontSize(14);
+      doc.text(30, 40, 'Data: ' + searchAta.date);
+      doc.text(30, 50, 'Departamento: ' + searchAta.department);
 
-    doc.setFontSize(11);
-    doc.text(30, 60, searchAta.content);
+      doc.setFontSize(11);
+      doc.text(30, 60, searchAta.content);
 
-    var out = doc.output('datauristring');
-    var x = window.open();
-    x.document.open();
-    x.document.location=out;
+      var out = doc.output('datauristring');
+      var x = window.open();
+      x.document.open();
+      x.document.location=out;
 
-    displayMessage('alert-success', 'PDF gerado com sucesso.')
+      displayMessage('alert-success', 'PDF gerado com sucesso.');
+    }
   }
 });
