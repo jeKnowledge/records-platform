@@ -1,3 +1,22 @@
 <template name="managemembers">
-  <h1>manage memberss</h1>
+  <div id="info-paragraph" class="">
+    <a href="#" class="close" onclick="$('#info-paragraph').hide()">&times;</a>
+    <span id="info-paragraph-text"></span>
+  </div>
+
+  <h3>Adicionar novo membro:</h3>
+
+  <form id="new-member-form" action="action">
+    <input type="text" id="member-name" placeholder="Nome" class="form-control form-element"/>
+
+    <input type="text" id="member-email" placeholder="Email" class="form-control form-element"/>
+
+    <select id="member-department" class="form-control form-element">
+      <option name="Tecnologia">Tecnologia</option>
+      <option name="Inovação">Inovação</option>
+      <option name="Iterno">Interno</option>
+    </select>
+
+    <button type="submit" class="btn btn-success btn-block form-element">Adicionar</button>
+  </form>
 </template>
