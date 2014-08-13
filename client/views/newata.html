@@ -4,19 +4,27 @@
     <span id="info-paragraph-text"></span>
   </div>
 
-  <form id="new-ata-form" action="action">
-    <input type="text" id="ata-subject" placeholder="Assunto" class="form-control form-element"/>
+  <div class="row">
+    <div class="col-md-8 column">
+      <form id="new-ata-form" action="action">
+        <input type="text" id="ata-subject" placeholder="Assunto" class="form-control form-element"/>
 
-    <input type="text" id="ata-date" placeholder="Data (clique)" class="form-control form-element"/>
+        <input type="text" id="ata-date" placeholder="Data (clique)" class="form-control form-element"/>
 
-    <select id="ata-department" class="form-control form-element">
-      <option name="Tecnologia">Tecnologia</option>
-      <option name="Inovação">Inovação</option>
-      <option name="Iterno">Interno</option>
-    </select>
+        <select id="ata-department" class="form-control form-element">
+          <option name="Tecnologia">Tecnologia</option>
+          <option name="Inovação">Inovação</option>
+          <option name="Iterno">Interno</option>
+        </select>
 
-    <textarea id="ata-content" placeholder="Conteudo da ata" class="form-control form-element" rows="10"></textarea>
+        <textarea id="ata-content" placeholder="Conteudo da ata" class="form-control form-element" rows="10"></textarea>
 
-    <button type="submit" class="btn btn-success btn-block form-element">Submeter</button>
-  </form>  
+        <button type="submit" class="btn btn-success btn-block form-element">Submeter</button>
+      </form>  
+    </div>
+
+    <div class="col-md-4 column">
+      {{> addmember}}
+    </div>
+  </div>
 </template>
