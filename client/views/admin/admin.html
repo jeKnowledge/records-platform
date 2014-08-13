@@ -1,0 +1,21 @@
+<template name="admin">
+  <div class="row">
+    <div id="content">
+      <div class="col-md-10 col-md-offset-1">
+        <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+          <li class="active"><a href="#new-ata" data-toggle="tab">Gerir Utilizadores</a></li>
+          <li><a href="#manage-ata" data-toggle="tab">Gerir Membros</a></li>
+        </ul>
+        <div id="my-tab-content" class="tab-content">
+          <div class="tab-pane active" id="new-ata">
+            {{> manageusers}}
+          </div>
+          <div class="tab-pane" id="manage-ata">
+            {{> managemembers}}
+          </div>
+        </div>
+        <p id="error-message" class="warning login_element"></p>
+      </div>
+    </div>
+  </div>
+</template>
