@@ -8,5 +8,11 @@
     {{/each}}
   </select>
 
+  <button type="submit" id="add-member" class="btn btn-success btn-block">Adicionar</button>
 
+  <ul>
+    {{#each addedm}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
 </template>
