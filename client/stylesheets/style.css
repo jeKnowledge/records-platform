@@ -1,12 +1,25 @@
-.login-element{
-	margin-top: 10px;
-}
-
 .form-element{
 	margin-top: 10px;
 }
 
+/* Login */
+
+.login-element{
+	margin-top: 10px;
+}
+
+/* Add Member Template */
+
+#addmember-paragraph{
+  margin-top: 18px;
+}
+
+.addmember-form-element{
+  margin-top: 16px;
+}
+
 /* Reset Bootstrap */
+
 .alert{
 	margin-bottom: 0px;
 }
