@@ -1,10 +1,10 @@
 <template name="addmember">
   <p class="form-element">Adicione os membros para quem quer enviar a ata:</p>
 
-  <select>
+  <select id="members-select" class="form-control">
     <option name="empty" selected>Escolha o membro a editar</option>
     {{#each members}}
-      <option name="{{_id}}">{{name}}</option>
+    <option name="{{_id}}">{{name}}</option>
     {{/each}}
   </select>
 

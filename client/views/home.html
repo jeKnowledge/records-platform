@@ -1,0 +1,7 @@
+<template name="home">
+  {{#if currentUser}}
+    {{> dashboard}}
+  {{else}}
+    {{> logSection}}
+  {{/if}} 
+</template>
