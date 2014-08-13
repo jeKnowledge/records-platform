@@ -1,0 +1,7 @@
+<template name="adminDashboard">
+  {{#if currentUser}}
+    {{> admin}}
+  {{else}}
+    {{> logSection}}
+  {{/if}} 
+</template>
