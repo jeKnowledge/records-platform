@@ -1,6 +1,7 @@
 {
   "packages": {
     "bootstrap-3": {},
-    "bootstrap3-datepicker": {}
+    "bootstrap3-datepicker": {},
+    "iron-router": {}
   }
 }
