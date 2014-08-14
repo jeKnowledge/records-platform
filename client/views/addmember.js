@@ -41,5 +41,20 @@ Template.addmember.events({
       //Hide initial message
       $('#initial-message').hide();
     }
+  },
+  'click .delete-button': function (evt, tmpl) {
+    var id = this._id;
+    var array = Session.get('added');
+    var index = 0;
+
+    for (var i = 0; i < array.length; i++) {
+      if  (array[i]._id === id) {
+        index = i;
+        break;
+      }
+    };
+    array.splice(index, 1);
+
+    Session.set('added', array);
   }
 });
