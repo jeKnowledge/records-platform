@@ -15,7 +15,7 @@ Template.addmember.events({
     var membro_id = $('#members-select option:selected').attr('name');
 
     if (membro_id === 'empty') {
-      //display message say select member please
+      //Display message: select a member please
     } else {
       var membro = Members.find({ _id: membro_id }).fetch()[0];
       var array = Session.get('added');

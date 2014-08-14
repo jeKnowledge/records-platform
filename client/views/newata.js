@@ -28,7 +28,9 @@ Template.newata.events({
       if (error) {
         displayMessage('alert-danger', error);
       } else {
-        displayMessage('alert-success', 'Ata inserida com sucesso na base de dados.');
+        var membros = Session.get('added');
+        Meteor.call('sendemail', membros, subject, content);
+        displayMessage('alert-success', 'Ata inserida com sucesso na base de dados. Enviadas por email com sucesso.');
         $('#ata-subject').val('');
         $('#ata-date').val('');
         $('#ata-content').val('');

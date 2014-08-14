@@ -53,5 +53,15 @@ Meteor.methods({
         throw new Meteor.Error(500, error);
       };
     });
+  },
+  'sendemail': function (membros, subject, content) {
+    for (var i = 0; i < membros.length; i++) {
+      Email.send({
+        to: membros[i].email,
+        from: 'geral@jeknowledge.com',
+        subject: 'Ata: '+ subject,
+        text: content
+      });
+    };
   }
 });
