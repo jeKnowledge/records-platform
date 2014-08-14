@@ -30,10 +30,18 @@ Template.newata.events({
       } else {
         var membros = Session.get('added');
         Meteor.call('sendemail', membros, subject, content);
-        displayMessage('alert-success', 'Ata inserida com sucesso na base de dados. Enviadas por email com sucesso.');
+        if (membros.length != 0) {
+          displayMessage('alert-success', 'Ata inserida na base de dados e enviada por email para os membros selecionados com sucesso.');
+        } else {
+          displayMessage('alert-success', 'Ata inserida com sucesso na base de dados.');
+        }
+
+        //Reset
         $('#ata-subject').val('');
         $('#ata-date').val('');
         $('#ata-content').val('');
+        Session.set('added', []);
+        $('#initial-message').show();
       }
     });
   }

@@ -4,7 +4,7 @@
   <select id="members-select" class="form-control addmember-form-element">
     <option name="empty" selected>Escolha o membro a adicionar</option>
     {{#each members}}
-    <option name="{{_id}}">{{name}}</option>
+    <option name="{{_id}}">{{name}} ({{email}})</option>
     {{/each}}
   </select>
 
