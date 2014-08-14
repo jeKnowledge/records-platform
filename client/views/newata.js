@@ -1,4 +1,4 @@
-var displayMessage = function (tipo, message) {
+displayMessage = function (tipo, message) {
   $('#info-paragraph-text').text(message);
 
   $('#info-paragraph').show();
