@@ -7,13 +7,18 @@ Template.signupForm.events({
       password: $('#signup-password').val(),
 
       profile: {
-        email: $('#signup-email').val()
+        email: $('#signup-email').val(),
+        department: $('#signup-department').val()
         // Other required field values can go here
       }
     }, function (error) {
       if (error) {
-        console.log('An error occurred creating an account: ' + error);
-        $('#error-message').text(error);        
+        displayMessage2('alert-danger', error);
+      } else {
+        displayMessage2('alert-success', 'Utilizador criado com sucesso.');
+        $('signup-username').val('');
+        $('signup-password').val('');
+        $('signup-email').val('');
       }
     });
   }
