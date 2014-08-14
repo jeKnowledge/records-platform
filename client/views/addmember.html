@@ -10,9 +10,18 @@
 
   <button type="submit" id="add-member" class="btn btn-success btn-block form-element">Adicionar</button>
 
-  <ul>
-    {{#each addedm}}
-      <li>{{name}}</li>
-    {{/each}}
-  </ul>
+  <table class="table form-element">
+    <thead>
+      <tr>
+        <th>Membro(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each addedm}}
+        <tr>
+          <td>{{name}} ({{{email}}})</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </template>

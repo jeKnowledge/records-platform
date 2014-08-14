@@ -25,8 +25,8 @@ Template.managemembers.events({
         displayMessage('alert-danger', error);
       } else {
         displayMessage('alert-success', 'Membro inserido com sucesso.');
-        $('member-name').val('');
-        $('member-email').val('');
+        $('#member-name').val('');
+        $('#member-email').val('');
       }
     });
   }
