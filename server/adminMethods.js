@@ -33,5 +33,29 @@ Meteor.methods({
         throw new Meteor.Error(500, error);
       }
     })
+  },
+  'createNewUser': function (username_g, password_g, email_g, department_g) {
+    if (!username_g) {
+      throw new Meteor.Error(411, 'Username is too small');
+    }
+
+    if (password_g.length < 4) {
+      throw new Meteor.Error(411, 'Password is too small.');
+    }
+
+    if (!validateEmail(email_g)) {
+      throw new Meteor.Error(400, 'Email is not valid.');
+    }
+
+    Accounts.createUser({
+      username: username_g,
+      password: password_g,
+
+      profile: {
+        email: email_g,
+        department: department_g
+        // Other required field values can go here
+      }
+    });
   }
 });

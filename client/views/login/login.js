@@ -2,23 +2,19 @@ Template.signupForm.events({
   'submit #signup-form': function (event, template) {
     event.preventDefault();
 
-    Accounts.createUser({
-      username: $('#signup-username').val(),
-      password: $('#signup-password').val(),
+    var username = $('#signup-username').val();
+    var password = $('#signup-password').val(); 
+    var email = $('#signup-email').val();
+    var department = $('#signup-department').val();
 
-      profile: {
-        email: $('#signup-email').val(),
-        department: $('#signup-department').val()
-        // Other required field values can go here
-      }
-    }, function (error) {
+    Meteor.call('createNewUser', username, password, email, department, function (error) {
       if (error) {
         displayMessage2('alert-danger', error);
       } else {
         displayMessage2('alert-success', 'Utilizador criado com sucesso.');
-        $('signup-username').val('');
-        $('signup-password').val('');
-        $('signup-email').val('');
+        $('#signup-username').val('');
+        $('#signup-password').val('');
+        $('#signup-email').val('');
       }
     });
   }
