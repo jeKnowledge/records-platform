@@ -5,3 +5,7 @@ Meteor.publish('atas', function () {
 Meteor.publish('meetings', function () {
   return Meetings.find({ });
 });
+
+Meteor.publish('projects', function () {
+  return Projects.find({ });
+})
