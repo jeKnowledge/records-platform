@@ -9,9 +9,9 @@ Template.signupForm.events({
 
     Meteor.call('createNewUser', username, password, email, department, function (error) {
       if (error) {
-        displayMessage2('alert-danger', error);
+        console.log(error);
       } else {
-        displayMessage2('alert-success', 'Utilizador criado com sucesso.');
+        console.log('User criado com sucesso.');
         $('#signup-username').val('');
         $('#signup-password').val('');
         $('#signup-email').val('');
@@ -30,8 +30,7 @@ Template.loginForm.events({
 
       function (error) {
         if (error) {
-          consoe.log('An error occurred logging in: ' + error);
-          $('#error-message').text(error);
+          console.log('An error occurred logging in: ' + error);
         }
       }
     );
@@ -45,7 +44,6 @@ Template.logoutForm.events({
     Meteor.logout(function (error) {
       if (error) {
         console.log('An error occurred logging out: ' + error);
-        $('#error-message').text(error);        
       }
     });
   }

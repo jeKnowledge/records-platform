@@ -1,3 +1,3 @@
 Atas = new Meteor.Collection('atas');
 
-Members = new Meteor.Collection('members');
+Meetings = new Meteor.Collection('meetings');
