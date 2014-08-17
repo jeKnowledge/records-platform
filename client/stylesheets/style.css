@@ -1,3 +1,8 @@
+/* Calendar */
+#calendar{
+	margin: 50px;
+}
+
 .form-element{
 	margin-top: 10px;
 }
@@ -6,16 +11,6 @@
 
 .login-element{
 	margin-top: 10px;
-}
-
-/* Add Member Template */
-
-#addmember-paragraph{
-  margin-top: 18px;
-}
-
-.addmember-form-element{
-  margin-top: 16px;
 }
 
 /* Reset Bootstrap */
