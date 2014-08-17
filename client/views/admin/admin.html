@@ -3,7 +3,25 @@
 
   <!-- Admin Template Start -->
 
-
+  <div class="col-md-10 col-md-offset-1">
+    <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+      <li class="active"><a href="#manage-users" data-toggle="tab">Gerir Utilizadores</a></li>
+      <li><a href="#manage-projects" data-toggle="tab">Gerir Projetos</a></li>
+      <li><a href="#manage-atas" data-toggle="tab">Gerir Atas</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="manage-users">
+         <h3>Adicionar novo utilizador:</h3>
+         {{> signupForm}}
+      </div>
+      <div class="tab-pane" id="manage-projects">
+        {{> manageProjects}}
+      </div>
+      <div class="tab-pane" id="manage-atas">
+        {{> manageAtas}}
+      </div>
+    </div>
+  </div>
 
   <!-- Admin Template End -->
   
