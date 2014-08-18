@@ -7,31 +7,54 @@
       <h4 class="modal-title" id="myModalLabel">Adicionar Reunião</h4>
     </div>
     <div class="modal-body">
-      <form id="new-meeting-form" action="action">
-        <span>Projeto</span>
-        <select id="meeting-project" class="form-control form-element">
-          <option name="empty">Escolha um projeto</option>
-          {{#each projects}}
-          <option name="{{ _id }}">{{ name }}</option>
-          {{/each}}
-        </select>
-        
-        <span>Data</span>        
-        <input type="text" id="meeting-date" placeholder="DD-MM-AAAA" class="form-control form-element"/>
+      <form class="form-horizontal" id="new-meeting-form" action="action">
 
-        <span>Hora</span>        
-        <input type="text" id="meeting-time" placeholder="HH-MM" class="form-control form-element"/>
+        <div class="form-group">
+          <label for="meeting-project" class="col-sm-3 control-label form-element">Projeto</label>
+          <div class="col-sm-9">
+            <select id="meeting-project" class="form-control form-element">
+              <option name="empty">Escolha um projeto</option>
+              {{#each projects}}
+              <option name="{{ _id }}">{{ name }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
 
-        <select id="meeting-department" class="form-control form-element">
-          <option name="empty">Escolha o departamento</option>
-          <option name="Tecnologia">Tecnologia</option>
-          <option name="Inovação">Inovação</option>
-          <option name="Iterno">Interno</option>
-        </select>
+        <div class="form-group">
+          <label for="meeting-date" class="col-sm-3 control-label">Data</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="meeting-date" placeholder="aaaa-mm-dd">
+          </div>
+        </div>
 
-        <textarea id="meeting-description" placeholder="Descrição (opcional)" class="form-control form-element" rows="6"></textarea>
+        <div class="form-group">
+          <label for="meeting-time" class="col-sm-3 control-label">Hora</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="meeting-time" placeholder="hh:mm">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="meeting-department" class="col-sm-3 control-label form-element">Departamento</label>
+          <div class="col-sm-9">
+            <select id="meeting-project" class="form-control form-element">
+              <option name="empty">Escolha um projeto</option>
+              {{#each projects}}
+              <option name="{{ _id }}">{{ name }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="meeting-description" class="col-sm-3 control-label">Descrição</label>
+          <div class="col-sm-9">
+            <textarea id="meeting-description" placeholder="Descrição (opcional)" class="form-control form-element" rows="6"></textarea>
+          </div>
+        </div>
+
       </form>
-
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-success">Adicionar</button>
