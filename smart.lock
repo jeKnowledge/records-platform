@@ -5,7 +5,8 @@
       "bootstrap-3": {},
       "bootstrap3-datepicker": {},
       "iron-router": {},
-      "fullcalendar": {}
+      "fullcalendar": {},
+      "moment": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -27,6 +28,11 @@
         "git": "https://github.com/TimHeckel/meteor-fullcalendar.git",
         "tag": "v1.6.1",
         "commit": "78dba7c564bf7baacf6556c70a3cc179d0e137c4"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.8.1",
+        "commit": "722ea63783d594341023836b7d418ab2567dab8c"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",
