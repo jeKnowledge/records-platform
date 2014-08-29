@@ -1,10 +1,11 @@
-/* Calendar */
-#calendar{
-	margin: 50px;
-}
+/* Genereal */
 
 .form-element{
 	margin-top: 5px;
+}
+
+.modal-element{
+	margin-top: 7px;
 }
 
 /* Login */
@@ -20,6 +21,10 @@
 }
 
 /* Calendar */
+
+#calendar{
+	margin: 50px;
+}
 
 .fc-today{
    background-color: #DEDEDE;
