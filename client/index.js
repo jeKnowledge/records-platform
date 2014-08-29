@@ -1,5 +1,5 @@
 Meteor.subscribe('atas');
 
-Meteor.subscribe('members');
+Meteor.subscribe('meetings');
 
 Meteor.subscribe('projects');

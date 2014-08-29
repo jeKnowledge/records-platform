@@ -18,3 +18,9 @@
 .alert{
 	margin-bottom: 0px;
 }
+
+/* Calendar */
+
+.fc-today{
+   background-color: #DEDEDE;
+}

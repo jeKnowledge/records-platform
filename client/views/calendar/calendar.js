@@ -1,5 +1,11 @@
 Template.calendar.rendered = function () {
-  $('#calendar').fullCalendar({
-    //Options
+  Meteor.call('generateEvents', function (error, data) {
+    if (error) {
+      //Dislpay error
+    } else {
+      $('#calendar').fullCalendar({
+        events: data
+      });
+    }
   });
 }

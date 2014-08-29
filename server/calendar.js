@@ -1,0 +1,15 @@
+Meteor.methods({
+  'generateEvents': function () {
+    var meetings = Meetings.find().fetch();
+    var data = [];
+
+    for (var i = 0; i < meetings.length; i++) {
+      var temp = { title: Projects.find({ _id: meetings[i].project }).fetch()[0].name,
+                   start: meetings[i].date }
+
+      data[data.length] = temp;
+    };
+
+    return data;
+  } 
+})
