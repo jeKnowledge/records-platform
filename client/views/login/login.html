@@ -14,6 +14,13 @@
 <!-- Aux Templates -->
 
 <template name="signupForm">
+  <div id="manage-users-alert" class="">
+    <a href="#" class="close" onclick="$('#manage-users-alert').hide()">&times;</a>
+    <span id="manage-users-alert-text"></span>
+  </div>
+
+   <h4>Adicionar novo utilizador:</h4>
+
   <form id="signup-form" action="action">
     <input type="text" id="signup-username" placeholder="Username" class="form-control login-element"/>
 

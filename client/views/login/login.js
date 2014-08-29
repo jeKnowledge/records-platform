@@ -1,3 +1,7 @@
+Template.signupForm.rendered = function () {
+  $('#manage-users-alert').hide();
+}
+
 Template.signupForm.events({
   'submit #signup-form': function (event, template) {
     event.preventDefault();
@@ -9,9 +13,11 @@ Template.signupForm.events({
 
     Meteor.call('createNewUser', username, password, email, department, function (error) {
       if (error) {
-        console.log(error);
+        displayAlert('#manage-users-alert', 'alert-danger', error);
+        $('#manage-users-alert').addClass('form-element');        
       } else {
-        console.log('User criado com sucesso.');
+        displayAlert('#manage-users-alert', 'alert-success', 'Utilizador criado com sucesso.');
+        $('#manage-users-alert').addClass('form-element');                
         $('#signup-username').val('');
         $('#signup-password').val('');
         $('#signup-email').val('');

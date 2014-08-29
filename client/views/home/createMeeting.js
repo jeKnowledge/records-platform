@@ -1,3 +1,7 @@
+Template.createMeeting.rendered = function () {
+  $('#add-meeting-alert').hide();
+}
+
 Template.createMeeting.projects = function () {
   return Projects.find({ });
 }
@@ -12,9 +16,13 @@ Template.createMeeting.events({
 
     Meteor.call('addMeeting', project, date, time, department, description, function (error) {
       if (error) {
-        console.log(error);
+        displayAlert('#add-meeting-alert', 'alert-danger', error);
       } else {
-        console.log('Inserido com sucesso na bd.');
+        displayAlert('#add-meeting-alert', 'alert-success', 'Reunião adicionada com sucesso.');
+        $('#new-meeting-date').val('');
+        $('#new-meeting-time').val('');
+        $('#new-meeting-department').val('');  
+        $('#new-meeting-description').val('');
       }
     });
   }

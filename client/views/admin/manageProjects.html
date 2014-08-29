@@ -1,6 +1,11 @@
 <template name="manageProjects">
 
-<h3>Adicionar novo projeto:</h3>
+<div id="manage-projects-alert" class="">
+  <a href="#" class="close" onclick="$('#manage-projects-alert').hide()">&times;</a>
+  <span id="manage-projects-alert-text"></span>
+</div>
+
+<h4>Adicionar novo projeto:</h4>
 
 <form id="new-project-form" action="action">
   <input type="text" id="project-name" placeholder="Nome" class="form-control form-element"/>

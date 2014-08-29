@@ -7,7 +7,13 @@
       <h4 class="modal-title" id="myModalLabel">Adicionar Reunião</h4>
     </div>
     <div class="modal-body">
-      <form class="form-horizontal" id="new-meeting-form" action="action">
+      
+      <div id="add-meeting-alert" class="">
+        <a href="#" class="close" onclick="$('#add-meeting-alert').hide()">&times;</a>
+        <span id="add-meeting-alert-text"></span>
+      </div>
+
+      <form class="form-horizontal form-element" id="new-meeting-form" action="action">
 
         <div class="form-group">
           <label for="meeting-project" class="col-sm-3 control-label form-element">Projeto</label>
