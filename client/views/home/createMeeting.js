@@ -18,10 +18,12 @@ Template.createMeeting.events({
       if (error) {
         displayAlert('#add-meeting-alert', 'alert-danger', error);
       } else {
-        displayAlert('#add-meeting-alert', 'alert-success', 'Reunião adicionada com sucesso.');
+        displayAlert('#add-meeting-alert', 'alert-success', 'Reunião marcada com sucesso.');
         $('#new-meeting-date').val('');
         $('#new-meeting-time').val('');
         $('#new-meeting-description').val('');
+
+        //Send email notification
       }
     });
   }

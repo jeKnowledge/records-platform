@@ -21,5 +21,8 @@ Meteor.methods({
                       time: time_m,
                       department: departmen_m,
                       description: description_m })
+  },
+  'deleteMeeting': function (delete_id) {
+    Meetings.remove({ _id: delete_id });
   }
 })

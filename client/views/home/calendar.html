@@ -14,6 +14,11 @@
 
       <div class="modal-body">
 
+        <div id="meeting-info-alert" class="">
+          <a href="#" class="close" onclick="$('#meeting-info-alert').hide()">&times;</a>
+          <span id="meeting-info-alert-text"></span>
+        </div>
+
         <form class="form-horizontal">
           <div class="form-group">
             <label for="meeting-project" class="col-sm-3 control-label">Projeto</label>
@@ -51,6 +56,9 @@
           </div>
         </form>
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="delete-meeting" class="btn btn-danger">Eliminar</button>
       </div>
 
     </div>
