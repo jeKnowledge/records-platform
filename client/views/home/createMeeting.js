@@ -21,7 +21,6 @@ Template.createMeeting.events({
         displayAlert('#add-meeting-alert', 'alert-success', 'Reunião adicionada com sucesso.');
         $('#new-meeting-date').val('');
         $('#new-meeting-time').val('');
-        $('#new-meeting-department').val('');  
         $('#new-meeting-description').val('');
       }
     });
