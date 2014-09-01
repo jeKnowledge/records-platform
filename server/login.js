@@ -5,7 +5,7 @@ function validateEmail(email) {
 }
 
 Meteor.methods({
-  'createNewUser': function (username_g, password_g, email_g, department_g) {
+  'createNewUser': function (username_g, password_g, name_g, email_g, department_g) {
     if (!username_g) {
       throw new Meteor.Error(411, 'Username is too small');
     }
@@ -14,8 +14,16 @@ Meteor.methods({
       throw new Meteor.Error(411, 'Password is too small.');
     }
 
+    if (!name) {
+      throw new Meteor.Error(411, 'Name is too small.');
+    }
+
     if (!validateEmail(email_g)) {
       throw new Meteor.Error(400, 'Email is not valid.');
+    }
+
+    if (department_g === 'empty') {
+      throw new Meteor.Error(400, 'Department is not valid.');
     }
 
     Accounts.createUser({
@@ -23,6 +31,7 @@ Meteor.methods({
       password: password_g,
 
       profile: {
+        name: name_g,
         email: email_g,
         department: department_g
         // Other required field values can go here

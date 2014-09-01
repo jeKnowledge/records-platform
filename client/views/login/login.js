@@ -7,11 +7,12 @@ Template.signupForm.events({
     event.preventDefault();
 
     var username = $('#signup-username').val();
-    var password = $('#signup-password').val(); 
+    var password = $('#signup-password').val();
+    var name = $('#signup-name').val();    
     var email = $('#signup-email').val();
-    var department = $('#signup-department').val();
+    var department = $('#signup-department option:selected').attr('name');
 
-    Meteor.call('createNewUser', username, password, email, department, function (error) {
+    Meteor.call('createNewUser', username, password, name, email, department, function (error) {
       if (error) {
         displayAlert('#manage-users-alert', 'alert-danger', error);
         $('#manage-users-alert').addClass('form-element');        
@@ -20,6 +21,7 @@ Template.signupForm.events({
         $('#manage-users-alert').addClass('form-element');                
         $('#signup-username').val('');
         $('#signup-password').val('');
+        $('#signup-name').val('');
         $('#signup-email').val('');
       }
     });
