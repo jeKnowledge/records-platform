@@ -4,6 +4,8 @@ Meteor.subscribe('meetings');
 
 Meteor.subscribe('projects');
 
+Meteor.subscribe('userData');
+
 displayAlert = function (which, type, message) {
   $(which + '-text').text(message);
 

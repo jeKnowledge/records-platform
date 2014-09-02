@@ -9,3 +9,7 @@ Meteor.publish('meetings', function () {
 Meteor.publish('projects', function () {
   return Projects.find({ });
 })
+
+Meteor.publish("userData", function () {
+  return Meteor.users.find({ });
+});

@@ -14,7 +14,7 @@ Meteor.methods({
       throw new Meteor.Error(411, 'Password is too small.');
     }
 
-    if (!name) {
+    if (!name_g) {
       throw new Meteor.Error(411, 'Name is too small.');
     }
 
