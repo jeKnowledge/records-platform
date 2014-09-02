@@ -1,5 +1,5 @@
 Meteor.methods({
-  'addMeeting': function (project_m, date_m, time_m, departmen_m, description_m) {
+  'addMeeting': function (project_m, date_m, time_m, departmen_m, description_m, members_g) {
     if (project_m === 'empty') {
       throw new Meteor.Error(400, 'Project is not valid.');
     }
@@ -20,7 +20,8 @@ Meteor.methods({
                       date: date_m,
                       time: time_m,
                       department: departmen_m,
-                      description: description_m })
+                      description: description_m,
+                      members: members_g })
   },
   'deleteMeeting': function (delete_id) {
     Meetings.remove({ _id: delete_id });

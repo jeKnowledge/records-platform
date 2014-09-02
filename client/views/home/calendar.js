@@ -13,6 +13,9 @@ Template.calendar.helpers({
   },
   description: function () {
     return Session.get('mi_description');
+  },
+  members: function () {
+    return Session.get('mi_members');
   }
 })
 
@@ -33,7 +36,13 @@ Template.calendar.rendered = function () {
           Session.set('mi_time', event_f.time);
           Session.set('mi_department', event_f.department);
           Session.set('mi_description', event_f.description);
-          
+
+          var array = [];
+          for (var i = 0; i < event_f.members.length; i++) {
+            array[array.length] = Meteor.users.find({ _id: event_f.members[i] }).fetch()[0];
+          };
+          Session.set('mi_members', array);
+
           //Show Modal
           $('#meeting-info').modal('show');
         }

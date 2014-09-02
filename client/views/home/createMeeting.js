@@ -17,8 +17,17 @@ Template.createMeeting.events({
     var time = $('#new-meeting-time').val();
     var department = $('#new-meeting-department').val();  
     var description = $('#new-meeting-description').val();
+    var members = [];
 
-    Meteor.call('addMeeting', project, date, time, department, description, function (error) {
+    //Get Member's IDs
+    var temp = $('.panel-body').find('p');
+    for (var i = 0; i < temp.length; i++) {
+      if ($(temp[i]).find('input').is(':checked')) {
+        members[members.length] = $(temp[i]).attr('name');
+      }
+    };
+
+    Meteor.call('addMeeting', project, date, time, department, description, members, function (error) {
       if (error) {
         displayAlert('#add-meeting-alert', 'alert-danger', error);
       } else {
