@@ -6,6 +6,10 @@ Template.createMeeting.projects = function () {
   return Projects.find({ });
 }
 
+Template.createMeeting.members = function () {
+  return Meteor.users.find({ });
+}
+
 Template.createMeeting.events({
   'click #submit-new-meeting-form': function (evt, tmpl) {
     var project = $('#new-meeting-project option:selected').attr('name');

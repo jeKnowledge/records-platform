@@ -1,4 +1,4 @@
-/* Genereal */
+/* General */
 
 .form-element{
 	margin-top: 5px;
@@ -10,6 +10,14 @@
 
 #add-buttons{
 	margin: 50px;
+}
+
+.panel-heading a:link,
+.panel-heading a:visited,
+.panel-heading a:hover,
+.panel-heading a:active{
+	text-decoration: none;
+	color: #777777;
 }
 
 /* Login */
