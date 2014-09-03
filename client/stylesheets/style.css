@@ -20,6 +20,15 @@
 	color: #777777;
 }
 
+#side-bar{
+	margin-top: -15px;
+	margin-left: 20px;
+}
+
+.plus-sign{
+	margin-top: -10px;
+}
+
 /* Login */
 
 .login-element{

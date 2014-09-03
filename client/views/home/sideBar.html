@@ -1,0 +1,22 @@
+<template name="sideBar">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><h3>Reuniões</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each meetings}}
+      <tr>
+        <td name="{{_id}}" class="meeting-list-item">
+          <p>{{project}}</p>
+          <span class="glyphicon glyphicon-plus-sign pull-right plus-sign"></span>
+          <p>{{date}} {{time}}h</p>          
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</template>
