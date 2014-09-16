@@ -3,7 +3,7 @@ Template.createMeeting.rendered = function () {
 }
 
 Template.createMeeting.projects = function () {
-  return Projects.find({ });
+  return Projects.find({ state: 'Em execução' });
 }
 
 Template.createMeeting.members = function () {

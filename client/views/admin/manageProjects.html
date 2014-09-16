@@ -11,12 +11,51 @@
   <input type="text" id="project-name" placeholder="Nome" class="form-control form-element"/>
 
   <select id="project-department" class="form-control form-element">
+    <option name="empty">Departamento</option>    
     <option name="Tecnologia">Tecnologia</option>
     <option name="Inovação">Inovação</option>
-    <option name="Iterno">Interno</option>
+    <option name="Interno">Interno</option>
   </select>
 
-  <button type="submit" id="submit_project" class="btn btn-success btn-block form-element">Adicionar</button>
+  <button type="submit" id="submit-project" class="btn btn-success btn-block form-element">Adicionar</button>
 </form>
+
+<h4>Gerir projetos:</h4>
+
+<form id="manage-projects-form" action="action">
+
+  <select id="manage-project-selector" class="form-control form-element">
+    <option name="empty">Escolha um projeto.</option>
+    {{#each projetos}}
+      <option name="{{ _id }}">{{ name }}</option>
+    {{/each}}
+  </select>
+
+  <input type="text" id="manage-project-name" placeholder="Nome" class="form-control form-element"/>
+
+  <select id="manage-project-department" class="form-control form-element">
+    <option name="empty">Departamento</option>
+    <option name="Tecnologia">Tecnologia</option>
+    <option name="Inovação">Inovação</option>
+    <option name="Interno">Interno</option>
+  </select>
+
+  <select id="manage-project-state" class="form-control form-element">
+    <option name="empty">Estado</option>
+    <option name="Em execução">Em execução</option>
+    <option name="Terminado">Terminado</option>
+  </select>
+
+  <div class="btn-group btn-group-justified form-element">
+    <div class="btn-group">
+      <button type="button" class="btn btn-success" id="manage-project-update-button">Atualizar</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger" id="manage-project-delete-button">Eliminar</button>
+    </div>
+  </div>
+
+</form>
+
 
 </template>
