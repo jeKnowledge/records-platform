@@ -29,6 +29,10 @@
 	margin-top: -10px;
 }
 
+.plus-sign:hover{
+	color: #7f8c8d;
+}
+
 /* Login */
 
 .login-element{

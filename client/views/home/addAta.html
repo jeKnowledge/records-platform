@@ -4,14 +4,58 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      <h4 class="modal-title" id="myModalLabel">Escrever Ata</h4>
     </div>
     <div class="modal-body">
-      <p>Adicionar Ata</p>
+    
+    <div id="add-ata-alert" class="">
+        <a href="#" class="close" onclick="$('#add-meeting-alert').hide()">&times;</a>
+        <span id="add-ata-alert-text"></span>
+      </div>
+
+      <form class="form-horizontal form-element" id="new-meeting-form" action="action">
+
+        <div class="form-group">
+          <label for="ata-meeting" class="col-sm-3 control-label form-element">Reunião</label>
+          <div class="col-sm-9">
+            <select id="meeting-selector" class="form-control form-element">
+              <option name="empty">Reunião</option>
+              {{#each meetings}}
+              <option name="{{ _id }}">{{ date }} - {{ project }}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ata-content" class="col-sm-3 control-label">Conteudo</label>
+          <div class="col-sm-9">
+            <textarea id="ata-content" placeholder="Conteudo" class="form-control form-element" rows="12"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ata-members" class="col-sm-3 control-label">Membros</label>
+          <div class="col-sm-9">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a id="collapse-link" data-toggle="collapse" href="#collapse-content-ata">Clique para adicionar membros que estiveram presentes</a>
+              </div>
+              <div id="collapse-content-ata" class="panel-collapse collapse">
+                <div class="panel-body" id="panel-body-ata">
+                  {{#each members}}
+                   <p name="{{_id}}">{{profile.name}}<input type="checkbox" class="pull-right"></p>                  
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" id="submit-new-ata-form" class="btn btn-success">Guardar</button>
     </div>
   </div>
 </div>

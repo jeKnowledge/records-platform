@@ -8,7 +8,9 @@ Meteor.methods({
       throw new Meteor.Error(400, 'Project department is invalid.');
     }
 
-    Projects.insert({ name: project_name, department: project_department, state: 'Em execução'}); 
+    Projects.insert({ name: project_name,
+                      department: project_department,
+                      state: 'Em execução'}); 
   },
   'deleteProject': function (project_id) {
     Projects.remove({ _id: project_id });
@@ -26,6 +28,8 @@ Meteor.methods({
       throw new Meteor.Error(400, 'Project state is invalid.');
     }
 
-    Projects.update({ _id: project_id }, { name: project_name, department: project_department, state: project_state});
+    Projects.update({ _id: project_id }, { name: project_name,
+                                           department: project_department,
+                                           state: project_state});
   }
 });

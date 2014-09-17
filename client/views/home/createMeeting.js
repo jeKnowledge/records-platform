@@ -20,7 +20,7 @@ Template.createMeeting.events({
     var members = [];
 
     //Get Member's IDs
-    var temp = $('.panel-body').find('p');
+    var temp = $('#panel-body-meeting').find('p');
     for (var i = 0; i < temp.length; i++) {
       if ($(temp[i]).find('input').is(':checked')) {
         members[members.length] = $(temp[i]).attr('name');
@@ -32,11 +32,13 @@ Template.createMeeting.events({
         displayAlert('#add-meeting-alert', 'alert-danger', error);
       } else {
         displayAlert('#add-meeting-alert', 'alert-success', 'Reunião marcada com sucesso.');
+        $('#new-meeting-project').val('Projecto');        
         $('#new-meeting-date').val('');
         $('#new-meeting-time').val('');
+        $('#new-meeting-department').val('Departamento');                
         $('#new-meeting-description').val('');
 
-        //Send email notification
+        //Send email notification: scheduled meeting 
       }
     });
   }

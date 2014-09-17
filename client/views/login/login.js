@@ -23,6 +23,7 @@ Template.signupForm.events({
         $('#signup-password').val('');
         $('#signup-name').val('');
         $('#signup-email').val('');
+        $('#signup-department').val('Departamento');
       }
     });
   }
