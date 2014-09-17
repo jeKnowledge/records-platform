@@ -4,11 +4,11 @@ var currentDate = function () {
   var mm = today.getMonth()+1;
   var yyyy = today.getFullYear();
 
-  if(dd<10) {
+  if(dd < 10) {
     dd='0'+dd
   } 
 
-  if(mm<10) {
+  if(mm < 10) {
     mm='0'+mm
   } 
 
@@ -18,14 +18,67 @@ var currentDate = function () {
 }
 
 Template.sideBar.meetings = function () {
-  var array = Meetings.find({ members: Meteor.userId(), date: {$gte: currentDate()} }, { sort: {date: 1} }).fetch();
+  if (Session.get('meetingsLoaded') && Session.get('projectsLoaded')) {
+    var array = Meetings.find({ members: Meteor.userId(), date: {$gte: currentDate()} }, { sort: {date: 1} }).fetch();
+    var newArray = [];
 
-  for (var i = 0; i < array.length; i++) {
-    array[i].project = Projects.find({ _id: array[i].project}).fetch()[0].name;
-  };
+    if (array.length != 0) {
+      if (array.length > 3) {
+        for (var i = 0; i < 3; i++) {
+          newArray[i] = array[i];
+          newArray[i].project = Projects.find({ _id: array[i].project}).fetch()[0].name;
+        };
 
-  return array;
+        return newArray;
+      } else { //array.length < 3
+        for (var i = 0; i < array.length; i++) {
+          newArray[i] = array[i];          
+          newArray[i].project = Projects.find({ _id: array[i].project}).fetch()[0].name;
+        };
+
+        return newArray;         
+      }
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
 }
+
+Template.sideBar.atas = function () {
+  if (Session.get('atasLoaded') && Session.get('projectsLoaded')) {
+    var array = Atas.find({ members: Meteor.userId() }).fetch();
+    var newArray = [];
+
+    if (array.length != 0) {
+      if (array.length > 3) {
+        for (var i = 0; i < 3; i++) {
+          newArray[i] = array[i];          
+          newArray[i].title = Projects.find({ _id: Meetings.find({ _id: array[i].meeting }).fetch()[0].project }).fetch()[0].name;
+          newArray[i].date = Meetings.find({ _id: array[i].meeting }).fetch()[0].date;
+          newArray[i].time = Meetings.find({ _id: array[i].meeting }).fetch()[0].time;                
+        };
+
+        return newArray;
+      } else { //array.length < 3
+        for (var i = 0; i < array.length; i++) {
+          newArray[i] = array[i];          
+          newArray[i].title = Projects.find({ _id: Meetings.find({ _id: array[i].meeting }).fetch()[0].project }).fetch()[0].name;
+          newArray[i].date = Meetings.find({ _id: array[i].meeting }).fetch()[0].date;
+          newArray[i].time = Meetings.find({ _id: array[i].meeting }).fetch()[0].time;          
+        };
+
+        return newArray;         
+      }
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+}
+
 
 Template.sideBar.events({
   'click .meeting-list-item': function (evt, tmpl) {
@@ -43,7 +96,7 @@ Template.sideBar.events({
       array[array.length] = Meteor.users.find({ _id: event_f.members[i] }).fetch()[0];
     };
     Session.set('mi_members', array);
-   
+
     //Show Modal
     $('#meeting-info').modal('show'); 
   }

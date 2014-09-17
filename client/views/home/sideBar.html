@@ -7,15 +7,44 @@
     </tr>
   </thead>
   <tbody>
-    {{#each meetings}}
-      <tr>
-        <td name="{{_id}}" class="meeting-list-item">
-          <p>{{project}}</p>
-          <span class="glyphicon glyphicon-plus-sign pull-right plus-sign"></span>
-          <p>{{date}} {{time}}h</p>          
-        </td>
-      </tr>
-    {{/each}}
+  {{#each meetings}}
+  <tr>
+    <td name="{{_id}}" class="meeting-list-item">
+      <p>{{project}}</p>
+      <span class="glyphicon glyphicon-plus-sign pull-right plus-sign"></span>
+      <p>{{date}} {{time}}h</p>          
+    </td>
+  </tr>
+  {{/each}}
+  <tr>
+    <td name="{{_id}}" class="meeting-list-item">
+      <p><a href="#">Ver mais</a></p>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><h3>Atas</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each atas}}
+  <tr>
+    <td name="{{_id}}" class="ata-list-item">
+      <p>{{title}}</p>
+      <span class="glyphicon glyphicon-plus-sign pull-right plus-sign"></span>
+      <p>{{date}} {{time}}h</p> 
+    </td>
+  </tr>
+  {{/each}}
+  <tr>
+    <td name="{{_id}}" class="meeting-list-item">
+      <p><a href="#">Ver mais</a></p>
+    </td>
+  </tr>
   </tbody>
 </table>
 
