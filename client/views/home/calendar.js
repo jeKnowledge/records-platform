@@ -1,24 +1,3 @@
-Template.calendar.helpers({
-  project: function () {
-    return Session.get('mi_project');
-  },
-  date: function () {
-    return Session.get('mi_date');
-  },
-  time: function () {
-    return Session.get('mi_time');
-  },
-  department: function () {
-    return Session.get('mi_department');
-  },
-  description: function () {
-    return Session.get('mi_description');
-  },
-  members: function () {
-    return Session.get('mi_members');
-  }
-})
-
 Template.calendar.rendered = function () {
   Meteor.call('generateEvents', function (error, data) {
     if (error) {
@@ -52,22 +31,4 @@ Template.calendar.rendered = function () {
 
   $('#meeting-info-alert').hide();
 }
-
-Template.calendar.events({
-  'click #delete-meeting': function (evt, tmpl) {
-    var delete_id = Session.get('current_meeting');
-
-    Meteor.call('deleteMeeting', delete_id, function (error) {
-      if (error) {
-        displayAlert('#meeting-info-alert', 'alert-danger', error);
-      } else {
-        displayAlert('#meeting-info-alert', 'alert-success', 'Reunião eliminada com sucesso.');
-        $('#meeting-info').modal('hide');
-
-        //Send email notification
-      }
-    })
-  }
-})
-
 

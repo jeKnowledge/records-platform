@@ -64,6 +64,7 @@ Template.sideBar.atas = function () {
       } else { //array.length < 3
         for (var i = 0; i < array.length; i++) {
           newArray[i] = array[i];
+          console.log(array[i].meeting)
           newArray[i].title = Projects.find({ _id: Meetings.find({ _id: array[i].meeting }).fetch()[0].project }).fetch()[0].name;
           newArray[i].date = Meetings.find({ _id: array[i].meeting }).fetch()[0].date;
           newArray[i].time = Meetings.find({ _id: array[i].meeting }).fetch()[0].time;          
@@ -99,5 +100,23 @@ Template.sideBar.events({
 
     //Show Modal
     $('#meeting-info').modal('show'); 
-  }
+  },
+  'click .ata-list-item': function (evt, tmpl) {
+    ata = Atas.find({ _id: this._id }).fetch()[0];
+    event_f = Meetings.find({ _id: ata.meeting }).fetch()[0];
+    
+    Session.set('current_ata', this._id);
+    Session.set('ai_project', Projects.find({ _id: event_f.project }).fetch()[0].name);
+    Session.set('ai_date', event_f.date);
+    Session.set('ai_content', ata.content);
+
+    var array = [];
+    for (var i = 0; i < event_f.members.length; i++) {
+      array[array.length] = Meteor.users.find({ _id: event_f.members[i] }).fetch()[0];
+    };
+    Session.set('ai_members', array);    
+
+    //Show Modal
+    $('#ata-info').modal('show');     
+  } 
 })
