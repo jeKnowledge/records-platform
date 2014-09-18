@@ -47,5 +47,8 @@ Meteor.methods({
     Atas.insert({ meeting: ata_meeting,
                   content: ata_content,
                   members: ata_members });
+  },
+  'addAtaToMeeting': function (meeting_id) {
+    Meetings.update({ _id: meeting_id }, { $inc: { 'ata': 1 } });
   }
 })

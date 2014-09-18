@@ -4,20 +4,20 @@ Template.addAta.rendered = function () {
 }
 
 Template.addAta.meetings = function () {
- var searchMeetings = Meetings.find({ members: Meteor.userId(), ata: 0}).fetch();
+  var searchMeetings = Meetings.find({ members: Meteor.userId(), date: {$lte: currentDate()},ata: 0}).fetch();
 
- for (var i = 0; i < searchMeetings.length; i++) {
-   searchMeetings[i].project = Projects.find({ _id: searchMeetings[i].project }).fetch()[0].name;
+  for (var i = 0; i < searchMeetings.length; i++) {
+    searchMeetings[i].project = Projects.find({ _id: searchMeetings[i].project }).fetch()[0].name;
 
-   return searchMeetings;
- };
+    return searchMeetings;
+  };
 }
 
 Template.addAta.members = function () {
   var selectedMeeting = Session.get('selectedMeeting');
 
   if (selectedMeeting === 'empty') {
-    return null;
+    return [];
   } else {
     var meetingMembers = Meetings.find({ _id: selectedMeeting }).fetch()[0].members;
     var membros = [];
@@ -55,6 +55,8 @@ Template.addAta.events({
         $('#meeting-selector').val('Reunião');
         $('#ata-content').val('');
       }
-    })
+    });
+
+    Meteor.call('addAtaToMeeting', meeting);
   }
 })

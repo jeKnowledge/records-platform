@@ -1,4 +1,4 @@
-var currentDate = function () {
+currentDate = function () {
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1;
@@ -39,10 +39,10 @@ Template.sideBar.meetings = function () {
         return newArray;         
       }
     } else {
-      return null;
+      return [];
     }
   } else {
-    return null;
+    return [];
   }
 }
 
@@ -63,7 +63,7 @@ Template.sideBar.atas = function () {
         return newArray;
       } else { //array.length < 3
         for (var i = 0; i < array.length; i++) {
-          newArray[i] = array[i];          
+          newArray[i] = array[i];
           newArray[i].title = Projects.find({ _id: Meetings.find({ _id: array[i].meeting }).fetch()[0].project }).fetch()[0].name;
           newArray[i].date = Meetings.find({ _id: array[i].meeting }).fetch()[0].date;
           newArray[i].time = Meetings.find({ _id: array[i].meeting }).fetch()[0].time;          
@@ -72,10 +72,10 @@ Template.sideBar.atas = function () {
         return newArray;         
       }
     } else {
-      return null;
+      return [];
     }
   } else {
-    return null;
+    return [];
   }
 }
 
