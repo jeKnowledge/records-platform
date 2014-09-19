@@ -64,7 +64,6 @@ Template.sideBar.atas = function () {
       } else { //array.length < 3
         for (var i = 0; i < array.length; i++) {
           newArray[i] = array[i];
-          console.log(array[i].meeting)
           newArray[i].title = Projects.find({ _id: Meetings.find({ _id: array[i].meeting }).fetch()[0].project }).fetch()[0].name;
           newArray[i].date = Meetings.find({ _id: array[i].meeting }).fetch()[0].date;
           newArray[i].time = Meetings.find({ _id: array[i].meeting }).fetch()[0].time;          

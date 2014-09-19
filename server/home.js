@@ -70,6 +70,10 @@ Meteor.methods({
                   members: ata_members });
   },
   'addAtaToMeeting': function (meeting_id) {
-    Meetings.update({ _id: meeting_id }, { $inc: { 'ata': 1 } });
+    Meetings.update({ _id: meeting_id }, { $set: { 'ata': 1 } });
+  },
+  'deleteAta': function (ata_delete_id, meeting_id) {
+    Atas.remove({ _id: ata_delete_id });
+    Meetings.update({ _id: meeting_id }, { $set: { 'ata': 0 } });
   }
 })
