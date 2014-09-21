@@ -55,3 +55,31 @@ currentDate = function () {
 
   return today; 
 }
+
+//Generate PDF Function
+generatePDF = function (ataID) {
+  var searchAta = Atas.find({ _id: ataID }).fetch()[0];
+  searchAta.meeting = Projects.find({ _id: Meetings.find({ _id: searchAta.meeting }).fetch()[0].project }).fetch()[0].name;
+  for (var i = 0; i < searchAta.members.length; i++) {
+    searchAta.members[i] = Meteor.users.find({ _id: searchAta.members[i] }).fetch()[0].profile.name;
+  };
+
+  var doc = new jsPDF();
+
+  doc.setFontSize(25);
+  doc.text(30, 30, 'Ata ' + searchAta.meeting);
+
+  doc.setFontSize(14);
+  doc.text(30, 40, 'Data: ' + searchAta.date);
+
+  doc.setFontSize(12);
+  doc.text(30, 50, 'Membros presentes: ');
+  doc.text(30, 55, searchAta.members);
+  doc.text(30, 50 + (searchAta.members.length * 10), searchAta.content);
+
+
+  var out = doc.output('datauristring');
+  var x = window.open();
+  x.document.open();
+  x.document.location=out;
+}

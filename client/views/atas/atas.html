@@ -1,5 +1,49 @@
 <template name="atas">
+{{#if currentUser}}
 
-<p>Atas page</p>
+<!-- Atas Template Start -->
+<div class="row clearfix">
 
+  <div class="col-md-10 column col-md-offset-1">
+
+    <h4>Atas</h4>
+
+    <div id="atas-alert" class="">
+      <a href="#" class="close" onclick="$('#atas-alert').hide()">&times;</a>
+      <span id="atas-alert-text"></span>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Projeto</th>
+          <th>Data</th>
+          <th>Conteudo</th>
+          <th>Membros</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each atass}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{date}}</td>
+        <td>{{content}}h</td>
+        <td>{{members}}</td>
+        <td><button class="btn btn-xs btn-primary atas-table-info-modal">Ver mais</button> <button class="btn btn-xs btn-danger atas-table-delete-button">Eliminar</button> <button class="btn btn-xs btn-success atas-table-pdf-download"><span class="glyphicon glyphicon-download"></span> PDF</button></td>
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+    {{> modals}}
+
+  </div>
+
+</div>
+<!-- Atas Template End -->
+
+{{else}}
+{{> logSection}}
+{{/if}}
 </template>

@@ -20,10 +20,10 @@ Template.sideBar.meetings = function () {
         return newArray;         
       }
     } else {
-      return [];
+      return newArray;
     }
   } else {
-    return [];
+    return newArray;
   }
 }
 
@@ -53,10 +53,10 @@ Template.sideBar.atas = function () {
         return newArray;         
       }
     } else {
-      return [];
+      return newArray;
     }
   } else {
-    return [];
+    return newArray;
   }
 }
 
@@ -81,22 +81,21 @@ Template.sideBar.events({
     //Show Modal
     $('#meeting-info').modal('show'); 
   },
-  'click .ata-list-item': function (evt, tmpl) {
-    ata = Atas.find({ _id: this._id }).fetch()[0];
-    event_f = Meetings.find({ _id: ata.meeting }).fetch()[0];
-    
-    Session.set('current_ata', this._id);
-    Session.set('ai_project', Projects.find({ _id: event_f.project }).fetch()[0].name);
-    Session.set('ai_date', event_f.date);
-    Session.set('ai_content', ata.content);
+'click .ata-list-item': function (evt, tmpl) {
+  var meeting = Meetings.find({ _id: this.meeting }).fetch()[0];
 
-    var array = [];
-    for (var i = 0; i < event_f.members.length; i++) {
-      array[array.length] = Meteor.users.find({ _id: event_f.members[i] }).fetch()[0];
-    };
-    Session.set('ai_members', array);    
+  Session.set('current_ata', this._id);
+  Session.set('ai_project', Projects.find({ _id: meeting.project }).fetch()[0].name);
+  Session.set('ai_date', this.date);
+  Session.set('ai_content', this.content);
 
-    //Show Modal
-    $('#ata-info').modal('show');     
-  } 
+  var array = [];
+  for (var i = 0; i < this.members.length; i++) {
+    array[i] = Meteor.users.find({ _id: this.members[i] }).fetch()[0];
+  };
+  Session.set('ai_members', array);    
+
+  //Show Modal
+  $('#ata-info').modal('show');     
+} 
 })
