@@ -1,22 +1,3 @@
-currentDate = function () {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var yyyy = today.getFullYear();
-
-  if(dd < 10) {
-    dd='0'+dd
-  } 
-
-  if(mm < 10) {
-    mm='0'+mm
-  } 
-
-  today = yyyy + '-' + mm + '-' + dd;
-
-  return today; 
-}
-
 Template.sideBar.meetings = function () {
   if (Session.get('meetingsLoaded') && Session.get('projectsLoaded')) {
     var array = Meetings.find({ members: Meteor.userId(), date: {$gte: currentDate()} }, { sort: {date: 1} }).fetch();

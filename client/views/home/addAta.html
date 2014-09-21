@@ -7,9 +7,9 @@
       <h4 class="modal-title" id="myModalLabel">Escrever Ata</h4>
     </div>
     <div class="modal-body">
-    
-    <div id="add-ata-alert" class="">
-        <a href="#" class="close" onclick="$('#add-meeting-alert').hide()">&times;</a>
+
+      <div id="add-ata-alert" class="">
+        <a href="#" class="close" onclick="$('#add-ata-alert').hide()">&times;</a>
         <span id="add-ata-alert-text"></span>
       </div>
 
@@ -44,14 +44,14 @@
               <div id="collapse-content-ata" class="panel-collapse collapse">
                 <div class="panel-body" id="panel-body-ata">
                   {{#each members}}
-                   <p name="{{_id}}">{{profile.name}}<input type="checkbox" class="pull-right"></p>                  
+                  <p name="{{_id}}">{{profile.name}}<input type="checkbox" class="pull-right"></p>                  
                   {{/each}}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
+
       </form>
     </div>
     <div class="modal-footer">

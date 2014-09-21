@@ -4,29 +4,37 @@ Template.addAta.rendered = function () {
 }
 
 Template.addAta.meetings = function () {
-  var searchMeetings = Meetings.find({ members: Meteor.userId(), date: {$lte: currentDate()},ata: 0}).fetch();
+  if (Session.get('meetingsLoaded') && Session.get('projectsLoaded')) {
+    var searchMeetings = Meetings.find({ members: Meteor.userId(), date: {$lte: currentDate()}, ata: 0}).fetch();
 
-  for (var i = 0; i < searchMeetings.length; i++) {
-    searchMeetings[i].project = Projects.find({ _id: searchMeetings[i].project }).fetch()[0].name;
+      for (var i = 0; i < searchMeetings.length; i++) {
+          searchMeetings[i].project = Projects.find({ _id: searchMeetings[i].project }).fetch()[0].name;
+      };
 
     return searchMeetings;
-  };
+  } else {
+    return []; 
+  }
 }
 
 Template.addAta.members = function () {
-  var selectedMeeting = Session.get('selectedMeeting');
+  if (Session.get('meetingsLoaded') && Session.get('userDataLoaded')) {  
+    var selectedMeeting = Session.get('selectedMeeting');
 
-  if (selectedMeeting === 'empty') {
-    return [];
+    if (selectedMeeting === 'empty') {
+      return [];
+    } else {
+      var meetingMembers = Meetings.find({ _id: selectedMeeting }).fetch()[0].members;
+      var membros = [];
+
+      for (var i = 0; i < meetingMembers.length; i++) {
+        membros[membros.length] = Meteor.users.find({ _id: meetingMembers[i] }).fetch()[0];
+      };
+
+      return membros;
+    }
   } else {
-    var meetingMembers = Meetings.find({ _id: selectedMeeting }).fetch()[0].members;
-    var membros = [];
-
-    for (var i = 0; i < meetingMembers.length; i++) {
-      membros[membros.length] = Meteor.users.find({ _id: meetingMembers[i] }).fetch()[0];
-    };
-
-    return membros;
+    return [];
   }
 }
 

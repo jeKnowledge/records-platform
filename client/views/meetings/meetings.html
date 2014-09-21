@@ -1,5 +1,47 @@
 <template name="meetings">
+{{#if currentUser}}
 
-<p>Meetings page</p>
+<!-- Meetings Template Start -->
+<div class="row clearfix">
 
+  <div class="col-md-10 column col-md-offset-1">
+
+    <h4>Reuniões</h4>
+
+    <div id="meetings-alert" class="">
+      <a href="#" class="close" onclick="$('#meetings-alert').hide()">&times;</a>
+      <span id="meetings-alert-text"></span>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Projeto</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Membros</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each meetings}}
+      <tr>
+        <td>{{project}}</td>
+        <td>{{date}}</td>
+        <td>{{time}}h</td>
+        <td>{{members}}</td>
+        <td><button class="btn btn-xs btn-danger meetings-table-delete-button">Eliminar</button></td>
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+<!-- Home Template End -->
+
+{{else}}
+{{> logSection}}
+{{/if}}
 </template>
