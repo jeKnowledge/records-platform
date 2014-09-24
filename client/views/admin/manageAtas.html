@@ -1,3 +1,32 @@
 <template name="manageAtas">
-<p>atas</p>
+
+<div id="manage-atas-alert" class="">
+  <a href="#" class="close" onclick="$('#manage-atas-alert').hide()">&times;</a>
+  <span id="manage-atas-alert-text"></span>
+</div>
+
+<h4>Geriri Atas:</h4>
+
+  <p>Escolha a ata a editar:</p>
+  <select id="manage-atas-selector" class="form-control form-element">
+    <option name="empty">Escolha uma ata.</option>
+    {{#each atas}}
+      <option name="{{ _id }}">{{ date }} - {{meeting}}</option>
+    {{/each}}
+  </select>
+
+  <textarea rows="12" placeholder="Conteudo" class="form-control form-element" id="manage-atas-content"></textarea>
+
+  <div class="btn-group btn-group-justified form-element">
+    <div class="btn-group">
+      <button type="button" class="btn btn-success" id="manage-atas-update-button">Atualizar</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger" id="manage-atas-delete-button">Eliminar</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary" id="manage-atas-pdf-button"><span class="glyphicon glyphicon-download"></span> PDF</button>
+    </div>
+  </div>
+
 </template>

@@ -1,7 +1,7 @@
 Meteor.methods({
   'addProject': function (project_name, project_department) {
     if (!project_name) {
-      throw new Meteor.Error(411, 'Project name is too small');
+      throw new Meteor.Error(411, 'Project name is too small.');
     }
 
     if (project_department === 'empty') {
@@ -17,7 +17,7 @@ Meteor.methods({
   },
   'updateProject': function (project_id, project_name, project_department, project_state) {
     if (!project_name) {
-      throw new Meteor.Error(411, 'Project name is too small');
+      throw new Meteor.Error(411, 'Project name is too small.');
     }
 
     if (project_department === 'empty') {
@@ -31,5 +31,12 @@ Meteor.methods({
     Projects.update({ _id: project_id }, { name: project_name,
                                            department: project_department,
                                            state: project_state});
+  },
+  'updateAta': function (ata_id, ata_content) {
+    if (!ata_content) {
+      throw new Meteor.Error(411, 'Ata content is too small.');
+    }
+
+    Atas.update({ _id: ata_id }, { $set: { content: ata_content } });
   }
 });
