@@ -29,7 +29,11 @@ Template.modals.helpers({
     return Session.get('mi_department');
   },
   m_description: function () {
-    return Session.get('mi_description');
+    if (Session.get('mi_description').length === 0) {
+      return 'Sem descrição.';
+    } else {
+      return Session.get('mi_description');
+    }
   },
   m_members: function () {
     return Session.get('mi_members');

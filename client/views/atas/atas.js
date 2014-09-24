@@ -2,7 +2,7 @@ Template.atas.rendered = function () {
   $('#atas-alert').hide();
 }
 
-Template.atas.atass = function () {
+Template.atas.atas = function () {
   if (Session.get('meetingsLoaded') && Session.get('projectsLoaded') && Session.get('userDataLoaded')) {
     var array = Atas.find({ members: Meteor.userId() }, { sort: { date: -1 } }).fetch();
     var newArray = [];
@@ -43,11 +43,10 @@ Template.atas.events({
     displayAlert('#ata-alert', 'alert-success', 'PDF gerado com sucesso.');
   },
   'click .atas-table-info-modal': function (evt, tmpl) {
-    console.log('fas')
     Session.set('current_ata', this._id);
     Session.set('ai_project', this.title);
     Session.set('ai_date', this.date);
-    Session.set('ai_content', this.content);
+    Session.set('ai_content', Atas.find({ _id: this._id }).fetch()[0].content);
 
     var array = [];;
     for (var i = 0; i < this.members.length; i++) {

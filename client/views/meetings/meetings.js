@@ -35,5 +35,23 @@ Template.meetings.events({
         //Send email notification
       }
     })
+  },
+  'click .meetings-table-info-modal': function (evt, tmpl) {
+    Session.set('current_meeting', this._id);
+    Session.set('mi_project', this.project);
+    Session.set('mi_date', this.date);
+    Session.set('mi_time', this.time);
+    Session.set('mi_department', this.department);    
+    Session.set('mi_description', this.description);
+
+    var array = [];;
+    for (var i = 0; i < this.members.length; i++) {
+      array[i] = { profile: { name: '' } };
+      array[i].profile.name = this.members[i]
+    };
+    Session.set('mi_members', array);        
+
+    //Show Modal
+    $('#meeting-info').modal('show');
   }
 })

@@ -33,6 +33,15 @@
 	color: #7f8c8d;
 }
 
+.home-icon{
+  margin-top: 12px;
+  color: black;
+}
+
+.home-icon:hover{
+  color: #428bca;
+}
+
 /* Login */
 
 .login-element{

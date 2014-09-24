@@ -6,7 +6,9 @@
 
   <div class="col-md-10 column col-md-offset-1">
 
-    <h4>Reuniões</h4>
+    <div class="row">
+      <h4 class="pull-left">Reuniões</h4> <a href="{{pathFor 'home'}}"><span class="pull-right glyphicon glyphicon-home home-icon"></span></a>
+    </div>
 
     <div id="meetings-alert" class="">
       <a href="#" class="close" onclick="$('#meetings-alert').hide()">&times;</a>
@@ -30,13 +32,15 @@
         <td>{{date}}</td>
         <td>{{time}}h</td>
         <td>{{members}}</td>
-        <td><button class="btn btn-xs btn-danger meetings-table-delete-button">Eliminar</button></td>
+        <td><button class="btn btn-xs btn-primary meetings-table-info-modal">Ver mais</button> <button class="btn btn-xs btn-danger meetings-table-delete-button">Eliminar</button></td>
       </tr>
       {{/each}}
       </tbody>
     </table>
 
   </div>
+
+  {{> modals}}
 
 </div>
 <!-- Meetings Template End -->
