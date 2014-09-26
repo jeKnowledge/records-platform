@@ -8,7 +8,8 @@ accounts-password
 bootstrap-3
 accounts-base
 insecure
-iron-router
 email
 fullcalendar
 moment
+iron:router
+
